@@ -114,7 +114,7 @@ export function Features() {
                 </div>
 
                 <p className="text-xs font-semibold tracking-[0.18em] text-blue-600 uppercase">
-                  AI Driven Integrations
+                  Agent Driven Integrations
                 </p>
 
                 <h3 className="text-lg font-semibold text-blue-900">

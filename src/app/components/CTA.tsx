@@ -41,19 +41,19 @@ export function CTA() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
         >
-          Ready to Transform Your Integrations?
+          Stop Managing Integrations. Start Orchestrating Systems.
         </motion.h2>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed"
         >
-          Join hundreds of enterprises who trust Zyntegrate to power their critical integrations. Start your free trial today.
+          Bring clarity to your infrastructure. Automate intelligently. Move at the speed of business.
         </motion.p>
         
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -82,7 +82,7 @@ export function CTA() {
           className="mt-8 text-blue-100 text-sm"
         >
           No credit card required • 14-day free trial • Cancel anytime
-        </motion.p>
+        </motion.p> */}
       </motion.div>
     </section>
   );

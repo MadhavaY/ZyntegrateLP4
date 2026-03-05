@@ -2,6 +2,7 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import logo from '../assets/logo2.png'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -44,7 +45,8 @@ export function Header() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <div className="flex items-center gap-2">
-              <div className="size-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg shadow-lg shadow-blue-500/30"></div>
+              {/* <div className="size-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg shadow-lg shadow-blue-500/30"></div> */}
+              <img className='w-12 h-12' src={logo}/>
               <span className="font-semibold text-xl text-gray-900">Zyntegrate</span>
             </div>
           </motion.div>
@@ -52,11 +54,25 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <a
+              href="#why-it-matters"
+              onClick={(e) => handleNavClick(e, '#why-it-matters')}
+              className="text-gray-600 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all font-medium"
+            >
+              Why
+            </a>
+            <a
               href="#features"
               onClick={(e) => handleNavClick(e, '#features')}
               className="text-gray-600 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all font-medium"
             >
               Features
+            </a>
+             <a
+              href="#agents"
+              onClick={(e) => handleNavClick(e, '#agents')}
+              className="text-gray-600 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all font-medium"
+            >
+              Agent
             </a>
             <a
               href="#use-cases"
@@ -66,17 +82,10 @@ export function Header() {
               Use Cases
             </a>
             <a
-              href="#pricing"
-              onClick={(e) => handleNavClick(e, '#pricing')}
+              href="#cta"
               className="text-gray-600 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all font-medium"
             >
-              Pricing
-            </a>
-            <a
-              href="#docs"
-              className="text-gray-600 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all font-medium"
-            >
-              Docs
+              Contact
             </a>
           </div>
 

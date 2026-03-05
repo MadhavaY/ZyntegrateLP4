@@ -61,7 +61,7 @@ const WhyItMatters = () => {
             </span>
           </h2>
           <p className="text-blue-800 text-lg leading-relaxed">
-            The world runs on data. Here's why seamless integration is no longer optional—it's the foundation of every modern enterprise.
+            The world runs on data. Here's why seamless integration is no longer optional it's the foundation of every modern enterprise.
           </p>
         </motion.div>
 

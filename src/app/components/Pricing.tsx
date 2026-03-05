@@ -1,6 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Zap, Cloud, Activity, Layers3, Rocket, Briefcase, ShieldCheck } from "lucide-react";
+import http from  "../assets/http.png";
+import webhook from "../assets/webhook.png";
+import hubspot from "../assets/hubspot.png";
+import salesforce from "../assets/salesforce.jpg";
+import aws_sns from "../assets/aws_sns.png";
+import aws_sqs from "../assets/aws_sqs.png";
+import azure_service_bus from "../assets/azure-service-bus.png";
+import websocket from "../assets/websocket.png";
+import timer from "../assets/timer.png";
 
 interface Trigger {
   name: string;
@@ -8,15 +17,15 @@ interface Trigger {
 }
 
 const triggers: Trigger[] = [
-  { name: "Http Trigger", icon: <Zap className="w-8 h-8" /> },
-  { name: "Webhook Trigger", icon: <Cloud className="w-8 h-8" /> },
-  { name: "Hubspot Trigger", icon: <Activity className="w-8 h-8" /> },
-  { name: "Salesforce Platform Event", icon: <Layers3 className="w-8 h-8" /> },
-  { name: "AWS SNS Trigger", icon: <Rocket className="w-8 h-8" /> },
-  { name: "AWS SQS Trigger", icon: <Briefcase className="w-8 h-8" /> },
-  { name: "Azure Service Bus Trigger", icon: <ShieldCheck className="w-8 h-8" /> },
-  { name: "Websocket Trigger", icon: <Zap className="w-8 h-8" /> },
-  { name: "Timer Trigger", icon: <Rocket className="w-8 h-8" /> },
+  { name: "Http Trigger", icon: <img src={http} alt="http" className="w-8 h-8" /> },
+  { name: "Webhook Trigger", icon: <img src={webhook} alt="webhook" className="w-8 h-8" /> },
+  { name: "Hubspot Trigger", icon: <img src={hubspot} alt="hubspot" className="w-8 h-8" /> },
+  { name: "Salesforce Platform Event", icon: <img src={salesforce} alt="salesforce" className="w-8 h-8" /> },
+  { name: "AWS SNS Trigger", icon: <img src={aws_sns} alt="aws_sns" className="w-8 h-8" /> },
+  { name: "AWS SQS Trigger", icon: <img src={aws_sqs} alt="aws_sqs" className="w-8 h-8" /> },
+  { name: "Azure Service Bus Trigger", icon: <img src={azure_service_bus} alt="azure_service_bus" className="w-8 h-8" /> },
+  { name: "Websocket Trigger", icon: <img src={websocket} alt="websocket" className="w-8 h-8" /> },
+  { name: "Timer Trigger", icon: <img src={timer} alt="timer" className="w-8 h-8" /> },
 ];
 
 const Pricing: React.FC = () => {

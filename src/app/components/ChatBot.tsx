@@ -20,7 +20,7 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 const BOT_RESPONSES: { [key: string]: string } = {
-  pricing: 'Our pricing starts at $99/month for the Starter plan. We also offer Professional ($299/month) and custom Enterprise plans. Would you like to know more about a specific plan?',
+  pricing: 'We don`t have a public pricing yet, please contact us at @info-z-ninth.com',
   features: 'Zyntegrate offers workflow automation, unified data layer, real-time sync, enterprise security, analytics & insights, and cloud & legacy support. Which feature interests you most?',
   demo: 'I\'d be happy to schedule a demo for you! Please click the "Schedule Demo" button at the top of the page, or you can reach out to our sales team at sales@zyntegrate.com.',
   integration: 'We support 50+ pre-built connectors for popular platforms including Salesforce, SAP, AWS, Azure, Google Cloud, and more. We can also build custom connectors for your specific needs.',
@@ -111,8 +111,8 @@ export function ChatBot() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 size-24 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-2xl shadow-blue-500/50 flex items-center justify-center hover:scale-110 transition-transform"
-          > Chatbot
+            className="fixed bottom-6 right-6 z-50 size-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-2xl shadow-blue-500/50 flex items-center justify-center hover:scale-110 transition-transform"
+          > <Bot className="size-10 text-white" />
             {/* <MessageCircle className="size-8 text-white" /> */}
             <motion.div
               // animate={{ scale: [1, 1.2, 1] }}
