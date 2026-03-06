@@ -89,7 +89,7 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <Button variant="ghost">Sign In</Button>
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30">
+            <Button className="bg-gradient-to-r bg-blue-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30">
               Get Started
             </Button>
           </div>
