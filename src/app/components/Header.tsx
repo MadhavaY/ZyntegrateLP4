@@ -2,90 +2,108 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import logo from '../assets/logo2.png';
+import logo from '../assets/logo4.jpg'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setMobileMenuOpen(false);
+    }
   };
-
-  const navLinks = [
-    { label: 'Why', href: '#why-it-matters' },
-    { label: 'Features', href: '#features' },
-    { label: 'Agent', href: '#agents' },
-    { label: 'Use Cases', href: '#use-cases' },
-    { label: 'Contact', href: '#cta' },
-  ];
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 shadow-md' : 'bg-white/50'
-      } backdrop-blur-md`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/90 backdrop-blur-xl shadow-lg shadow-black/5'
+          : 'bg-white/80 backdrop-blur-md'
+      }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-
           {/* Logo */}
-          <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex items-center gap-2 cursor-pointer">
-            <img className="w-12 h-12" src={logo} alt="Zyntegrate logo" />
-            <span className="text-xl font-semibold text-gray-900">Zyntegrate</span>
-          </a>
+          <a
+  href="#hero"
+  onClick={(e) => handleNavClick(e, '#hero')}
+  className="flex items-center gap-2 cursor-pointer"
+>
+  <img className="w-12 h-12" src={logo} alt="Zyntegrate logo" />
+  <span className="font-semibold text-xl text-gray-900">Zyntegrate</span>
+</a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="relative px-3 py-2 text-gray-700 font-medium rounded-lg"
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.span
-                  className="absolute inset-0 bg-blue-100/20 rounded-lg"
-                  layoutId={`hover-${link.href}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileHover={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                />
-                <span className="relative z-10">{link.label}</span>
-              </motion.a>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            <a
+              href="#why-it-matters"
+  onClick={(e) => handleNavClick(e, '#why-it-matters')}
+  className="relative px-3 py-1.5 text-gray-600 hover:text-blue-700 font-medium rounded-full bg-transparent hover:bg-blue-100 transition-all duration-200"
+>
+  Why
+</a>
+            <a
+              href="#features"
+              onClick={(e) => handleNavClick(e, '#features')}
+              className="px-3 py-1.5 text-gray-600 hover:text-blue-700 font-medium rounded-full bg-transparent hover:bg-blue-100 transition-all duration-200"
+            >
+              Features
+            </a>
+             <a
+              href="#agents"
+              onClick={(e) => handleNavClick(e, '#agents')}
+              className="px-3 py-1.5 text-gray-600 hover:text-blue-700 font-medium rounded-full bg-transparent hover:bg-blue-100 transition-all duration-200"
+            >
+              Agent
+            </a>
+            <a
+              href="#use-cases"
+              onClick={(e) => handleNavClick(e, '#use-cases')}
+              className="px-3 py-1.5 text-gray-600 hover:text-blue-700 font-medium rounded-full bg-transparent hover:bg-blue-100 transition-all duration-200"
+            >
+              Use Cases
+            </a>
+            <a
+              href="#cta"
+              className="px-3 py-1.5 text-gray-600 hover:text-blue-700 font-medium rounded-full bg-transparent hover:bg-blue-100 transition-all duration-200"
+            >
+              Contact
+            </a>
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <motion.div whileHover={{ scale: 1.03 }}>
-              <Button variant="ghost" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
-                Sign In
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.03 }}>
-              <Button className="bg-blue-600 text-white opacity-95 hover:opacity-100 transition-opacity duration-200">
-                Get Started
-              </Button>
-            </motion.div>
+            <Button variant="ghost">Sign In</Button>
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30">
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile menu button */}
-          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X className="size-6 text-gray-900" /> : <Menu className="size-6 text-gray-900" />}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="size-6 text-gray-900" />
+            ) : (
+              <Menu className="size-6 text-gray-900" />
+            )}
           </button>
         </div>
 
@@ -93,30 +111,45 @@ export function Header() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-white/95 backdrop-blur-md absolute top-16 left-0 right-0 shadow-md border-t border-gray-200 overflow-hidden"
+              className="md:hidden overflow-hidden"
             >
-              <div className="flex flex-col gap-4 px-6 py-6">
-                {navLinks.map((link) => (
+              <div className="py-4 border-t border-gray-200">
+                <div className="flex flex-col gap-4">
                   <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-gray-700 font-medium text-lg hover:bg-blue-100/30 px-3 py-2 rounded-lg transition-colors duration-200"
+                    href="#features"
+                    onClick={(e) => handleNavClick(e, '#features')}
+                    className="text-gray-600 hover:text-gray-900 transition-colors"
                   >
-                    {link.label}
+                    Features
                   </a>
-                ))}
-                <div className="flex flex-col gap-3 mt-4">
-                  <Button variant="ghost" className="w-full opacity-90 hover:opacity-100 transition-opacity duration-200">
-                    Sign In
-                  </Button>
-                  <Button className="w-full bg-blue-600 text-white opacity-95 hover:opacity-100 transition-opacity duration-200">
-                    Get Started
-                  </Button>
+                  <a
+                    href="#use-cases"
+                    onClick={(e) => handleNavClick(e, '#use-cases')}
+                    className="text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    Use Cases
+                  </a>
+                  <a
+                    href="#pricing"
+                    onClick={(e) => handleNavClick(e, '#pricing')}
+                    className="text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    Pricing
+                  </a>
+                  <a
+                    href="#docs"
+                    className="text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    Docs
+                  </a>
+                  <div className="flex flex-col gap-2 pt-4 border-t border-gray-200">
+                    <Button variant="ghost" className="w-full">Sign In</Button>
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600">Get Started</Button>
+                  </div>
                 </div>
               </div>
             </motion.div>
