@@ -17,20 +17,20 @@ interface Trigger {
 }
 
 const triggers: Trigger[] = [
-  { name: "Http Trigger", icon: <img src={http} alt="http" className="w-8 h-8" /> },
-  { name: "Webhook Trigger", icon: <img src={webhook} alt="webhook" className="w-8 h-8" /> },
-  { name: "Hubspot Trigger", icon: <img src={hubspot} alt="hubspot" className="w-8 h-8" /> },
-  { name: "Salesforce Platform Event", icon: <img src={salesforce} alt="salesforce" className="w-8 h-8" /> },
-  { name: "AWS SNS Trigger", icon: <img src={aws_sns} alt="aws_sns" className="w-8 h-8" /> },
-  { name: "AWS SQS Trigger", icon: <img src={aws_sqs} alt="aws_sqs" className="w-8 h-8" /> },
-  { name: "Azure Service Bus Trigger", icon: <img src={azure_service_bus} alt="azure_service_bus" className="w-8 h-8" /> },
-  { name: "Websocket Trigger", icon: <img src={websocket} alt="websocket" className="w-8 h-8" /> },
-  { name: "Timer Trigger", icon: <img src={timer} alt="timer" className="w-8 h-8" /> },
+  { name: "Http Trigger", icon: <img src={http} alt="http" className="w-10 h-10" /> },
+  { name: "Webhook Trigger", icon: <img src={webhook} alt="webhook" className="w-10 h-10" /> },
+  { name: "Hubspot Trigger", icon: <img src={hubspot} alt="hubspot" className="w-10 h-10" /> },
+  { name: "Salesforce Platform Event", icon: <img src={salesforce} alt="salesforce" className="w-10 h-10" /> },
+  { name: "AWS SNS Trigger", icon: <img src={aws_sns} alt="aws_sns" className="w-10 h-10" /> },
+  { name: "AWS SQS Trigger", icon: <img src={aws_sqs} alt="aws_sqs" className="w-10 h-10" /> },
+  { name: "Azure Service Bus Trigger", icon: <img src={azure_service_bus} alt="azure_service_bus" className="w-10 h-10" /> },
+  { name: "Websocket Trigger", icon: <img src={websocket} alt="websocket" className="w-10 h-10" /> },
+  { name: "Timer Trigger", icon: <img src={timer} alt="timer" className="w-10 h-10" /> },
 ];
 
 const Pricing: React.FC = () => {
   return (
-    <div className="overflow-hidden w-full bg-gray-50 py-8">
+    <div className="overflow-hidden w-full">
       <motion.div
         className="flex gap-12"
         animate={{ x: ["0%", "-50%"] }}
@@ -38,7 +38,7 @@ const Pricing: React.FC = () => {
       >
         {[...triggers, ...triggers].map((trigger, idx) => (
           <div key={idx} className="flex flex-col items-center min-w-max">
-            <div className="bg-white p-3 rounded-full shadow">{trigger.icon}</div>
+            <div className=" rounded-full shadow">{trigger.icon}</div>
             <span className="mt-2 text-sm text-gray-700 text-center">{trigger.name}</span>
           </div>
         ))}

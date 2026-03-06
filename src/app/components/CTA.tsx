@@ -8,7 +8,7 @@ export function CTA() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id='cta' className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 animate-gradient bg-[length:200%_auto]"></div>
       

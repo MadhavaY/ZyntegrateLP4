@@ -1,58 +1,115 @@
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Check } from 'lucide-react';
-import { motion } from 'motion/react';
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Check } from "lucide-react";
+import { motion } from "motion/react";
+import { WorkflowDiagram } from "./WorkFlow";
 
 const useCases = [
   {
-    title: 'Legacy System Integration',
+    title: "Legacy System Integration",
     description:
-      'Connect outdated databases and systems with modern cloud applications without extensive rewrites.',
+      "Connect outdated databases and systems with modern cloud applications without extensive rewrites.",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600",
     benefits: [
-      'Bridge legacy and modern systems',
-      'Preserve existing investments',
-      'No complex migrations required',
+      "Bridge legacy and modern systems",
+      "Preserve existing investments",
+      "No complex migrations required",
     ],
   },
   {
-    title: 'Multi-Cloud Orchestration',
+    title: "Vendor Agnostic Orchestration",
     description:
-      'Seamlessly integrate services across AWS, Azure, Google Cloud, and other cloud providers.',
+      "Seamlessly integrate services across AWS, Azure, Google Cloud, and other cloud providers.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600",
     benefits: [
-      'Cross-platform data flow',
-      'Unified management console',
-      'Vendor-agnostic approach',
+      "Cross-platform data flow",
+      "Unified management console",
+      "Multi-Cloud approach",
     ],
   },
   {
-    title: 'Third-Party API Integration',
+    title: "Third-Party API Integration",
     description:
-      'Connect with any REST, SOAP, or GraphQL API to extend your business capabilities.',
+      "Connect with any REST, SOAP, or GraphQL API to extend your business capabilities.",
+    image:
+      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1600",
     benefits: [
-      'Pre-built connectors for popular APIs',
-      'Custom connector development',
-      'API versioning support',
+      "Pre-built connectors for popular APIs",
+      "Custom connector development",
+      "API versioning support",
     ],
   },
+  {
+    title: "AI Agents for Automation",
+    description:
+      "Deploy intelligent AI agents that monitor workflows, trigger integrations, and automate operational tasks.",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600",
+    benefits: [
+      "Autonomous workflow execution",
+      "AI-driven decision making",
+      "Automated alerts and actions",
+    ],
+  },
+  {
+    title: "Low-Code / No-Code Integrations",
+    description:
+      "Empower teams to build integrations visually using a drag-and-drop workflow builder.",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1600",
+    benefits: [
+      "Drag-and-drop integration builder",
+      "Build workflows without writing code",
+      "Reduce engineering dependency",
+    ],
+  },
+  {
+  title: "Prebuilt Connectors",
+  description:
+    "Instantly connect to enterprise platforms using ready-made connectors for popular services.",
+  image:
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600",
+  benefits: [
+    "Support for Salesforce, SAP, AWS, Azure, SQL, REST & more",
+    "Rapid integration setup",
+    "Secure and scalable connectors",
+  ],
+},
+{
+  title: "Monitoring & Alerts",
+  description:
+    "Track every workflow with live dashboards, logs, and intelligent alerting.",
+  image:
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600",
+  benefits: [
+    "Real-time dashboards and logs",
+    "Customizable alerts and notifications",
+    "Detect failures and anomalies instantly",
+  ],
+}
 ];
+
+type UseCase = (typeof useCases)[0];
 
 function UseCaseCard({
   useCase,
   index,
 }: {
-  useCase: (typeof useCases)[0];
+  useCase: UseCase;
   index: number;
 }) {
   return (
     <article
       className="sticky w-full max-w-5xl mx-auto"
       style={{
-        top: 120 + index * 32, // stack offset
-        zIndex: index + 10,    // 👈 FIXED (higher index = on top)
+        top: 120 + index * 32,
+        zIndex: index + 10,
       }}
     >
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-white rounded-3xl shadow-2xl border border-blue-100/60 overflow-hidden">
         {/* Content */}
-        <div className={`p-8 lg:p-12 space-y-6 ${index % 2 ? 'lg:order-2' : ''}`}>
+        <div className={`p-8 lg:p-12 space-y-6 ${index % 2 ? "lg:order-2" : ""}`}>
           <h3 className="text-3xl lg:text-4xl font-bold text-blue-900">
             {useCase.title}
           </h3>
@@ -73,23 +130,28 @@ function UseCaseCard({
           </ul>
         </div>
 
-        {/* Image */}
-        <div
-          className={`relative min-h-[280px] lg:min-h-[360px] ${
-            index % 2 ? 'lg:order-1' : ''
-          }`}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-blue-300/20 blur-2xl rotate-3" />
-          <div className="relative h-full overflow-hidden">
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1759752393975-7ca7b302fcc6?w=1080&q=80"
-              alt={useCase.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+    {/* Image */}
+    <div
+      className={`relative min-h-[280px] lg:min-h-[360px] flex items-center justify-center ${
+        index % 2 ? "lg:order-1" : ""
+      }`}
+    >
+      {/* glow background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-blue-300/20 blur-2xl rotate-3" />
+
+      {/* image container */}
+      <div className="relative w-full h-full p-6">
+        <div className="w-full h-full rounded-2xl border border-blue-100 overflow-hidden shadow-lg">
+          <ImageWithFallback
+            src={useCase.image}
+            alt={useCase.title}
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
         </div>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
   );
 }
 
@@ -113,18 +175,19 @@ export function UseCases() {
           className="text-center max-w-3xl mx-auto mb-24 px-4"
         >
           <h2 className="text-5xl font-bold text-blue-900 mb-6">
-            Built for Your{' '}
+            Built for Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">
               Use Case
             </span>
           </h2>
+
           <p className="text-xl text-blue-800">
             Whether you're bridging legacy databases, integrating cloud apps,
-            or connecting third-party APIs
+            deploying AI agents, or automating workflows.
           </p>
         </motion.div>
 
-        {/* Shared Scroll Container (CRITICAL) */}
+        {/* Scroll container */}
         <div
           className="relative"
           style={{
@@ -133,11 +196,7 @@ export function UseCases() {
         >
           <div className="space-y-24">
             {useCases.map((useCase, index) => (
-              <UseCaseCard
-                key={index}
-                useCase={useCase}
-                index={index}
-              />
+              <UseCaseCard key={index} useCase={useCase} index={index} />
             ))}
           </div>
         </div>

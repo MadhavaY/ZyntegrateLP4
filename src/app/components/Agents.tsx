@@ -49,7 +49,7 @@ function Agents() {
   }, [animate]);
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
+    <section id="agents" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
       
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-96 h-96 bg-blue-200/20 blur-3xl rounded-full animate-pulse" />

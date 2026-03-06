@@ -16,7 +16,7 @@ const reasons = [
     stat: "10×",
     statLabel: "Faster time to integration",
     description:
-      "Manual data pipelines take months. AI-powered automation shrinks deployment from quarters to days, letting teams focus on strategy instead of plumbing.",
+      "Manual data pipelines take months. Agent powered automation shrinks deployment from quarters to minutes, letting teams focus on strategy instead of plumbing.",
   },
   {
     icon: ShieldCheck,
