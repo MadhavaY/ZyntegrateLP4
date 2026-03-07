@@ -8,21 +8,37 @@ import { Header } from './components/Header';
 import { ChatBot } from './components/ChatBot';
 import Why from "./components/WhyItMatters";
 import Agents from "./components/Agents"
+import SignIn from "./components/Signin"
+import Contact from "./components/ContactUs"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <Pricing /> {/* infinite scrolling triggers */}
-      <Why/>
-      <Features />
-      <Agents/>
-      <UseCases />
-      
-      <CTA />
-      <Footer />
-      <ChatBot />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Landing page */}
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen bg-white">
+              <Header />
+              <Hero />
+              <Pricing />
+              <Why />
+              <Features />
+              <Agents />
+              <UseCases />
+              <CTA />
+              <Footer />
+              <ChatBot />
+            </div>
+          }
+        />
+
+        {/* Sign In page */}
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

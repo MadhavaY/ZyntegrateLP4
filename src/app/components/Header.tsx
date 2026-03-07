@@ -3,8 +3,12 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import logo from '../assets/logo4.jpg'
+import { useNavigate } from "react-router-dom";
+
+
 
 export function Header() {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -88,8 +92,10 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button className="bg-gradient-to-r bg-blue-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30">
+            
+            <Button 
+            onClick={() => navigate("/signin")}
+            className="bg-gradient-to-r bg-blue-600 hover:cursor-pointer hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30">
               Get Started
             </Button>
           </div>

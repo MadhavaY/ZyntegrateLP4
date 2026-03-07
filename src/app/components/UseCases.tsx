@@ -33,7 +33,7 @@ const useCases = [
     description:
       "Connect with any REST, SOAP, or GraphQL API to extend your business capabilities.",
     image:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1600",
+      "https://as1.ftcdn.net/jpg/07/63/99/82/1000_F_763998295_3r5Ln9vzFfb7P8Si8UNiWlauSmoiReGw.webp",
     benefits: [
       "Pre-built connectors for popular APIs",
       "Custom connector development",
@@ -45,7 +45,7 @@ const useCases = [
     description:
       "Deploy intelligent AI agents that monitor workflows, trigger integrations, and automate operational tasks.",
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600",
+      "https://plus.unsplash.com/premium_photo-1725907643623-f0f2fea6ff17?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     benefits: [
       "Autonomous workflow execution",
       "AI-driven decision making",
@@ -57,7 +57,7 @@ const useCases = [
     description:
       "Empower teams to build integrations visually using a drag-and-drop workflow builder.",
     image:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1600",
+      "https://media.istockphoto.com/id/1481582306/photo/conceptual-image-of-low-code-as-a-puzzle-combination-3d-rendering.jpg?s=1024x1024&w=is&k=20&c=q-chBa0TnF3XWUzW9KeukRjUkopB3oogp9aLwK64DA0=",
     benefits: [
       "Drag-and-drop integration builder",
       "Build workflows without writing code",
@@ -191,7 +191,7 @@ export function UseCases() {
         <div
           className="relative"
           style={{
-            height: `${useCases.length * 70}vh`,
+            height: `${useCases.length * 68}vh`,
           }}
         >
           <div className="space-y-24">

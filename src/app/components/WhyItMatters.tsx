@@ -40,7 +40,7 @@ const WhyItMatters = () => {
   return (
     <section
       id="why-it-matters"
-      className="relative bg-gradient-to-b from-white via-blue-50 to-white py-32 overflow-hidden"
+      className="relative bg-gradient-to-b from-white via-blue-50 to-white py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         {/* Section header */}
@@ -49,7 +49,7 @@ const WhyItMatters = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-1xl mx-auto mb-4"
         >
           <span className="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4 block">
             Why It Matters
@@ -74,7 +74,7 @@ const WhyItMatters = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative group bg-white rounded-3xl shadow-xl border border-blue-100/60 p-8 lg:p-12 overflow-hidden"
+              className="relative group bg-white rounded-3xl shadow-xl border border-blue-100/60 p-4 lg:p-4 overflow-hidden"
             >
               {/* Animated border */}
               <span className="absolute inset-0 border-2 border-transparent rounded-3xl pointer-events-none group-hover:border-blue-500 transition-all duration-500"></span>
