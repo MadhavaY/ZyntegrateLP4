@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { MessageCircle, X, Send, User } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface Message {
@@ -13,7 +13,7 @@ interface Message {
 const INITIAL_MESSAGES: Message[] = [
   {
     id: '1',
-    text: 'Hi! I\'m Zynbot, your integration assistant. How can I help you today?',
+    text: "Hi! I'm Zynbot, your integration assistant. How can I help you today?",
     sender: 'bot',
     timestamp: new Date(),
   },
@@ -22,32 +22,23 @@ const INITIAL_MESSAGES: Message[] = [
 const BOT_RESPONSES: { [key: string]: string } = {
   pricing: 'We don`t have a public pricing yet, please contact us at @info-z-ninth.com',
   features: 'Zyntegrate offers workflow automation, unified data layer, real-time sync, enterprise security, analytics & insights, and cloud & legacy support. Which feature interests you most?',
-  demo: 'I\'d be happy to schedule a demo for you! Please click the "Schedule Demo" button at the top of the page, or you can reach out to our sales team at sales@zyntegrate.com.',
+  demo: "I'd be happy to schedule a demo for you! Please click the \"Schedule Demo\" button at the top of the page, or you can reach out to our sales team at sales@zyntegrate.com.",
   integration: 'We support 50+ pre-built connectors for popular platforms including Salesforce, SAP, AWS, Azure, Google Cloud, and more. We can also build custom connectors for your specific needs.',
   support: 'We offer 24/7 support for all our customers. Professional plans include priority support, and Enterprise plans come with a dedicated account manager.',
   trial: 'Yes! We offer a 14-day free trial with no credit card required. You can start right away by clicking the "Start Free Trial" button.',
-  default: 'That\'s a great question! For more detailed information, I recommend checking our documentation or speaking with our sales team. Is there anything else I can help you with?',
+  default: "That's a great question! For more detailed information, I recommend checking our documentation or speaking with our sales team. Is there anything else I can help you with?",
 };
 
 function getBotResponse(userMessage: string): string {
   const message = userMessage.toLowerCase();
-  
-  if (message.includes('price') || message.includes('pricing') || message.includes('cost')) {
-    return BOT_RESPONSES.pricing;
-  } else if (message.includes('feature') || message.includes('capability') || message.includes('what can')) {
-    return BOT_RESPONSES.features;
-  } else if (message.includes('demo') || message.includes('presentation')) {
-    return BOT_RESPONSES.demo;
-  } else if (message.includes('integrate') || message.includes('connector') || message.includes('api')) {
-    return BOT_RESPONSES.integration;
-  } else if (message.includes('support') || message.includes('help')) {
-    return BOT_RESPONSES.support;
-  } else if (message.includes('trial') || message.includes('free')) {
-    return BOT_RESPONSES.trial;
-  } else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-    return 'Hello! How can I assist you with Zyntegrate today?';
-  }
-  
+
+  if (message.includes('price') || message.includes('pricing') || message.includes('cost')) return BOT_RESPONSES.pricing;
+  if (message.includes('feature') || message.includes('capability') || message.includes('what can')) return BOT_RESPONSES.features;
+  if (message.includes('demo') || message.includes('presentation')) return BOT_RESPONSES.demo;
+  if (message.includes('integrate') || message.includes('connector') || message.includes('api')) return BOT_RESPONSES.integration;
+  if (message.includes('support') || message.includes('help')) return BOT_RESPONSES.support;
+  if (message.includes('trial') || message.includes('free')) return BOT_RESPONSES.trial;
+  if (message.includes('hello') || message.includes('hi') || message.includes('hey')) return 'Hello! How can I assist you with Zyntegrate today?';
   return BOT_RESPONSES.default;
 }
 
@@ -62,42 +53,24 @@ export function ChatBot() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  useEffect(() => scrollToBottom(), [messages]);
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      text: inputValue,
-      sender: 'user',
-      timestamp: new Date(),
-    };
-
+    const userMessage: Message = { id: Date.now().toString(), text: inputValue, sender: 'user', timestamp: new Date() };
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response delay
     setTimeout(() => {
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: getBotResponse(inputValue),
-        sender: 'bot',
-        timestamp: new Date(),
-      };
+      const botResponse: Message = { id: (Date.now() + 1).toString(), text: getBotResponse(inputValue), sender: 'bot', timestamp: new Date() };
       setMessages((prev) => [...prev, botResponse]);
       setIsTyping(false);
     }, 1000 + Math.random() * 1000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendMessage(); }
   };
 
   return (
@@ -109,16 +82,12 @@ export function ChatBot() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 size-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-2xl shadow-blue-500/50 flex items-center justify-center hover:scale-110 transition-transform"
-          > <Bot className="size-10 text-white" />
-            {/* <MessageCircle className="size-8 text-white" /> */}
-            <motion.div
-              // animate={{ scale: [1, 1.2, 1] }}
-              // transition={{ duration: 2, repeat: Infinity }}
-              className="absolute inset-0 rounded-full bg-gradient-to-br opacity-75"
-            />
+            className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-2xl shadow-blue-500/50 flex items-center justify-center hover:scale-105 transition-transform"
+          >
+            <MessageCircle className="w-6 h-6 text-white" />
+            <motion.div className="absolute inset-0 rounded-full bg-gradient-to-br opacity-75" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -127,17 +96,17 @@ export function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.8 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.8 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-3rem)] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="size-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <Bot className="size-6 text-white" />
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Zynbot</h3>
@@ -146,9 +115,9 @@ export function ChatBot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="size-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors"
               >
-                <X className="size-5 text-white" />
+                <X className="w-5 h-5 text-white" />
               </button>
             </div>
 
@@ -157,25 +126,19 @@ export function ChatBot() {
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`flex gap-3 ${
-                    message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'
-                  }`}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  className={`flex gap-3 ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                 >
                   <div
-                    className={`flex-shrink-0 size-8 rounded-full flex items-center justify-center ${
+                    className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                       message.sender === 'bot'
                         ? 'bg-gradient-to-br from-blue-600 to-purple-600'
                         : 'bg-gray-200'
                     }`}
                   >
-                    {message.sender === 'bot' ? (
-                      <Bot className="size-5 text-white" />
-                    ) : (
-                      <User className="size-5 text-gray-600" />
-                    )}
+                    {message.sender === 'bot' ? <MessageCircle className="w-4 h-4 text-white" /> : <User className="w-4 h-4 text-gray-600" />}
                   </div>
                   <div
                     className={`max-w-[75%] rounded-2xl px-4 py-3 ${
@@ -191,31 +154,20 @@ export function ChatBot() {
 
               {/* Typing Indicator */}
               {isTyping && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex gap-3"
-                >
-                  <div className="size-8 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
-                    <Bot className="size-5 text-white" />
+                <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: 'easeInOut' }} className="flex gap-3">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                    <MessageCircle className="w-4 h-4 text-white" />
                   </div>
                   <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3">
                     <div className="flex gap-1">
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-                        className="size-2 bg-gray-400 rounded-full"
-                      />
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                        className="size-2 bg-gray-400 rounded-full"
-                      />
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                        className="size-2 bg-gray-400 rounded-full"
-                      />
+                      {[0, 0.2, 0.4].map((delay, i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 0.6, repeat: Infinity, delay }}
+                          className="w-2 h-2 bg-gray-400 rounded-full"
+                        />
+                      ))}
                     </div>
                   </div>
                 </motion.div>
@@ -238,14 +190,12 @@ export function ChatBot() {
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="size-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-blue-500/30"
+                  className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-blue-500/30"
                 >
-                  <Send className="size-5 text-white" />
+                  <Send className="w-5 h-5 text-white" />
                 </button>
               </div>
-              <p className="text-xs text-gray-500 mt-2 text-center">
-                Powered by Zyntegrate AI
-              </p>
+              <p className="text-xs text-gray-500 mt-2 text-center">Powered by Zyntegrate AI</p>
             </div>
           </motion.div>
         )}
